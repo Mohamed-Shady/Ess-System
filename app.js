@@ -3,10 +3,10 @@
  * تم الربط الفعلي مع Supabase
  */
 
-// 1. تهيئة الاتصال بـ Supabase (ضع روابطك هنا)
-const SUPABASE_URL = 'https://ghmlajdhfoxzzjzzxgwr.supabase.co/rest/v1/';
-const SUPABASE_ANON_KEY = 'sb_publishable_u3vcjQQmagQAGe4_T1NcIQ_OAi4EAJI';
-supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// 1. تهيئة الاتصال بـ Supabase بالبيانات الجديدة
+const SUPABASE_URL = 'https://ghmlajdhfoxzzjzzxgwr.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_u3vcjQQmagQAGe4_T1NcIQ_OAi4EAJI...'; // حط المفتاح كامل هنا
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // العناصر الأساسية في الواجهة
 const loginScreen = document.getElementById('login-screen');
