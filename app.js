@@ -6,7 +6,7 @@
 // 1. تهيئة الاتصال بـ Supabase (ضع روابطك هنا)
 const SUPABASE_URL = 'https://ghmlajdhfoxzzjzzxgwr.supabase.co/rest/v1/';
 const SUPABASE_ANON_KEY = 'sb_publishable_u3vcjQQmagQAGe4_T1NcIQ_OAi4EAJI';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // العناصر الأساسية في الواجهة
 const loginScreen = document.getElementById('login-screen');
