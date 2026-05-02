@@ -3,10 +3,12 @@
  * تم الربط الفعلي مع Supabase
  */
 
-// 1. تهيئة الاتصال بـ Supabase بالبيانات الجديدة
+// 1. تهيئة الاتصال بـ Supabase
 const SUPABASE_URL = 'https://ghmlajdhfoxzzjzzxgwr.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_u3vcjQQmagQAGe4_T1NcIQ_OAi4EAJI...'; // حط المفتاح كامل هنا
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const SUPABASE_ANON_KEY = 'sb_publishable_u3vcjQQmagQAGe4_T1NcIQ_OAi4EAJI';
+
+// استخدام اسم مختلف للمتغير لتجنب التعارض مع الكائن العالمي للمكتبة
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // العناصر الأساسية في الواجهة
 const loginScreen = document.getElementById('login-screen');
@@ -33,7 +35,7 @@ loginForm.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'جاري الدخول...';
 
     // الخطوة الأولى: التحقق من الايميل والباسورد
-    const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+    const { data: authData, error: authError } = await supabaseClient.auth.signInWithPassword({
         email: email,
         password: password,
     });
@@ -45,7 +47,7 @@ loginForm.addEventListener('submit', async (e) => {
     }
 
     // الخطوة الثانية: البحث عن بيانات الموظف المربوطة بهذا الحساب
-    const { data: employeeData, error: empError } = await supabase
+    const { data: employeeData, error: empError } = await supabaseClient
         .from('employees')
         .select('*')
         .eq('auth_user_id', authData.user.id)
@@ -75,7 +77,7 @@ btnCheckIn.addEventListener('click', async () => {
     const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
 
     // إضافة سجل جديد في جدول attendance باستخدام Employee ID
-    const { error } = await supabase
+    const { error } = await supabaseClient
         .from('attendance')
         .insert([{
             employee_id: currentEmployee.id,
@@ -108,7 +110,7 @@ btnCheckOut.addEventListener('click', async () => {
     const timeStr = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
 
     // تحديث سجل الحضور الخاص باليوم لنفس الموظف
-    const { error } = await supabase
+    const { error } = await supabaseClient
         .from('attendance')
         .update({
             check_out: now.toISOString(),
@@ -142,7 +144,7 @@ function showDashboard() {
 async function checkTodayAttendance() {
     const todayDate = new Date().toISOString().split('T')[0];
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from('attendance')
         .select('*')
         .eq('employee_id', currentEmployee.id)
@@ -176,6 +178,6 @@ function updateUIStatus(msg) {
 
 logoutLink.addEventListener('click', async (e) => {
     e.preventDefault();
-    await supabase.auth.signOut();
+    await supabaseClient.auth.signOut();
     location.reload();
 });
