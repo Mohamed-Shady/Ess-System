@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة موظف جديد | نظام ERP السعودي</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- تم حذف المكتبات الخارجية بناءً على الطلب -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="company_name_display">لوحة تحكم الشركة</h1>
+            <p>بوابة إضافة موظف جديد</p>
+        </header>
+
+        <div id="status-container" class="status-msg"></div>
+
+        <div class="form-card">
+            <form id="employee-form" novalidate>
+                <!-- القسم الأول: البيانات الشخصية -->
+                <section class="form-section">
+                    <h2 class="section-title"><span>👤</span> البيانات الشخصية</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="full_name">الاسم الرباعي</label>
+                            <input type="text" id="full_name" name="full_name" placeholder="أدخل الاسم الرباعي">
+                            <span class="error-message">الاسم الرباعي مطلوب</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">رقم الجوال</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="05xxxxxxxx">
+                            <span class="error-message">رقم الجوال مطلوب</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality">الجنسية</label>
+                            <select id="nationality" name="nationality">
+                                <option value="">اختر الجنسية</option>
+                                <option value="سعودي">سعودي</option>
+                                <option value="أخرى">أخرى</option>
+                            </select>
+                            <span class="error-message">يرجى اختيار الجنسية</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="national_id_iqama">رقم الهوية / الإقامة</label>
+                            <input type="text" id="national_id_iqama" name="national_id_iqama" placeholder="أدخل الرقم">
+                            <span class="error-message" id="id_error">رقم الهوية/الإقامة مطلوب</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- القسم الثاني: البيانات الوظيفية -->
+                <section class="form-section">
+                    <h2 class="section-title"><span>💼</span> البيانات الوظيفية</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="department">القسم</label>
+                            <select id="department" name="department">
+                                <option value="">اختر القسم</option>
+                                <option value="الموارد البشرية">الموارد البشرية</option>
+                                <option value="المالية">المالية</option>
+                                <option value="تقنية المعلومات">تقنية المعلومات</option>
+                                <option value="المبيعات">المبيعات</option>
+                                <option value="العمليات">العمليات</option>
+                            </select>
+                            <span class="error-message">يرجى اختيار القسم</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="basic_salary">الراتب الأساسي</label>
+                            <input type="number" id="basic_salary" name="basic_salary" placeholder="مثال: 5000">
+                            <span class="error-message">الراتب يجب أن يكون أكبر من صفر</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="hiring_date">تاريخ التعيين</label>
+                            <input type="date" id="hiring_date" name="hiring_date">
+                            <span class="error-message">تاريخ التعيين مطلوب</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- القسم الثالث: البيانات القانونية -->
+                <section class="form-section">
+                    <h2 class="section-title"><span>📜</span> البيانات القانونية</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="iqama_expiry_date">تاريخ انتهاء الهوية / الإقامة</label>
+                            <input type="date" id="iqama_expiry_date" name="iqama_expiry_date">
+                            <span class="error-message">تاريخ الانتهاء يجب أن يكون في المستقبل</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="btn-container">
+                    <button type="button" class="btn-secondary" id="reset-btn">إعادة تعيين</button>
+                    <button type="submit" class="btn-primary" id="submit-btn">حفظ الموظف</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

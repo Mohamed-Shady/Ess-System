@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | نظام ERP المتكامل</title>
+    <link rel="stylesheet" href="dashboard_style.css">
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>ERP SYSTEM</h2>
+        </div>
+        <nav class="sidebar-menu">
+            <a href="analytics.html" target="content-frame" class="active" onclick="setActive(this)">
+                <span>📊</span> <b>لوحة التحليلات</b>
+            </a>
+            <a href="add_employee.html" target="content-frame" onclick="setActive(this)">
+                <span>👤</span> <b>إضافة موظف</b>
+            </a>
+            <a href="attendance.html" target="content-frame" onclick="setActive(this)">
+                <span>🕒</span> <b>الحضور والانصراف</b>
+            </a>
+            <a href="payroll.html" target="content-frame" onclick="setActive(this)">
+                <span>💰</span> <b>مسير الرواتب</b>
+            </a>
+            <a href="requests.html" target="content-frame" onclick="setActive(this)">
+                <span>📝</span> <b>بوابة الطلبات</b>
+            </a>
+            <a href="finance.html" target="content-frame" onclick="setActive(this)">
+                <span>🏦</span> <b>الإدارة المالية</b>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- الشريط العلوي -->
+    <main style="width: 100%;">
+        <nav class="navbar">
+            <div class="company-info">
+                <h3 id="display-company-name">جاري تحميل اسم الشركة...</h3>
+            </div>
+            <div class="user-actions">
+                <button id="logout-btn" class="logout-btn">تسجيل الخروج</button>
+            </div>
+        </nav>
+
+        <!-- مساحة العرض الرئيسية -->
+        <div class="main-content">
+            <iframe name="content-frame" id="content-frame" src="analytics.html" title="المحتوى الرئيسي"></iframe>
+        </div>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

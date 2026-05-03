@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإدارة المالية | نظام ERP</title>
+    <link rel="stylesheet" href="finance_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="company_name_display">لوحة الحسابات والمالية</h1>
+            <p style="color: #7f8c8d;">إدارة الحركات المالية، الإيرادات والمصروفات</p>
+        </header>
+
+        <div id="status-container" class="status-msg"></div>
+
+        <!-- كروت الإحصائيات -->
+        <div class="stats-grid">
+            <div class="stat-card revenue">
+                <span class="stat-label">إجمالي الإيرادات</span>
+                <span id="total-revenue" class="stat-value">0.00</span>
+                <span style="font-size: 0.8rem; color: var(--revenue-color);">ريال سعودي</span>
+            </div>
+            <div class="stat-card expense">
+                <span class="stat-label">إجمالي المصروفات</span>
+                <span id="total-expenses" class="stat-value">0.00</span>
+                <span style="font-size: 0.8rem; color: var(--expense-color);">ريال سعودي</span>
+            </div>
+            <div class="stat-card profit">
+                <span class="stat-label">صافي الربح</span>
+                <span id="net-profit" class="stat-value">0.00</span>
+                <span style="font-size: 0.8rem; color: #3498db;">ريال سعودي</span>
+            </div>
+        </div>
+
+        <div class="forms-grid">
+            <!-- إضافة حركة مالية -->
+            <div class="card">
+                <h2>إضافة حركة مالية جديدة</h2>
+                <form id="transaction-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="transaction_date">التاريخ</label>
+                            <input type="date" id="transaction_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction_type">نوع الحركة</label>
+                            <select id="transaction_type" required>
+                                <option value="income">إيراد</option>
+                                <option value="expense">مصروف</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="category_id">التصنيف</label>
+                            <select id="category_id" required>
+                                <option value="">اختر التصنيف...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">المبلغ</label>
+                            <input type="number" id="amount" step="0.01" required placeholder="0.00">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">البيان / الوصف</label>
+                        <textarea id="description" rows="2" required placeholder="وصف موجز للحركة..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success" style="width: 100%;">حفظ الحركة المالية</button>
+                </form>
+            </div>
+
+            <!-- إدارة التصنيفات -->
+            <div class="card">
+                <h2>إضافة تصنيف مالي</h2>
+                <form id="category-form">
+                    <div class="form-group">
+                        <label for="new_category_name">اسم التصنيف</label>
+                        <input type="text" id="new_category_name" required placeholder="مثلاً: رواتب، مبيعات...">
+                    </div>
+                    <div class="form-group">
+                        <label for="new_category_type">النوع</label>
+                        <select id="new_category_type" required>
+                            <option value="income">إيراد</option>
+                            <option value="expense">مصروف</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">إضافة التصنيف</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- دفتر اليومية -->
+        <div class="card" style="padding: 0;">
+            <div style="padding: 20px; border-bottom: 1px solid #eee;">
+                <h2 style="margin: 0; border: none;">دفتر اليومية (أحدث الحركات)</h2>
+            </div>
+            <div class="journal-table-container" style="box-shadow: none; border-radius: 0;">
+                <table id="journal-table">
+                    <thead>
+                        <tr>
+                            <th>التاريخ</th>
+                            <th>النوع</th>
+                            <th>التصنيف</th>
+                            <th>البيان</th>
+                            <th>المبلغ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="journal-body">
+                        <tr><td colspan="5" style="text-align: center; padding: 40px; color: #999;">جاري تحميل البيانات...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="finance.js"></script>
+</body>
+</html>
