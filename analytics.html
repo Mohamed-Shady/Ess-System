@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحليلات | نظام ERP</title>
+    <link rel="stylesheet" href="analytics_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="company_name_display">لوحة تحليلات الإدارة</h1>
+            <p style="color: #636e72;">نظرة شاملة على أداء الشركة والموارد</p>
+        </header>
+
+        <!-- كروت الإحصائيات -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-label">إجمالي الموظفين</span>
+                <span id="total-employees" class="stat-value">0</span>
+                <span style="color: #48a999; font-size: 0.8rem;">موظف نشط</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">رواتب الشهر الحالي</span>
+                <span id="total-salaries" class="stat-value">0</span>
+                <span style="color: #c5a059; font-size: 0.8rem;">ريال سعودي</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">عدد الأقسام</span>
+                <span id="total-departments" class="stat-value">0</span>
+                <span style="color: #2980b9; font-size: 0.8rem;">قسم مفعل</span>
+            </div>
+        </div>
+
+        <!-- الرسم البياني -->
+        <div class="chart-container">
+            <div class="chart-header">
+                <h2>توزيع الرواتب الأساسية حسب الأقسام</h2>
+            </div>
+            <div id="chart-content">
+                <!-- سيتم توليد الأشرطة هنا بواسطة JS -->
+                <p style="text-align: center; color: #999; padding: 20px;">جاري تحميل البيانات وتحليل الرسوم البيانية...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="analytics.js"></script>
+</body>
+</html>

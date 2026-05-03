@@ -3,54 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام الخدمة الذاتية للموظفين</title>
+    <title>إضافة موظف جديد | نظام ERP السعودي</title>
     <link rel="stylesheet" href="style.css">
+    <!-- تم حذف المكتبات الخارجية بناءً على الطلب -->
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1 id="company_name_display">لوحة تحكم الشركة</h1>
+            <p>بوابة إضافة موظف جديد</p>
+        </header>
 
-    <!-- شاشة تسجيل الدخول -->
-    <div id="login-screen" class="container fade-in">
-        <h1>تسجيل الدخول</h1>
-        <p class="subtitle">مرحباً بك مجدداً، يرجى إدخال بياناتك</p>
-        
-        <form id="login-form">
-            <div class="form-group">
-                <label for="email">البريد الإلكتروني</label>
-                <input type="email" id="email" placeholder="example@company.com" required>
-            </div>
-            <div class="form-group">
-                <label for="password">كلمة المرور</label>
-                <input type="password" id="password" placeholder="••••••••" required>
-            </div>
-            <button type="submit" class="btn btn-primary">دخول</button>
-        </form>
+        <div id="status-container" class="status-msg"></div>
+
+        <div class="form-card">
+            <form id="employee-form" novalidate>
+                <!-- القسم الأول: البيانات الشخصية -->
+                <section class="form-section">
+                    <h2 class="section-title"><span>👤</span> البيانات الشخصية</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="full_name">الاسم الرباعي</label>
+                            <input type="text" id="full_name" name="full_name" placeholder="أدخل الاسم الرباعي">
+                            <span class="error-message">الاسم الرباعي مطلوب</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">رقم الجوال</label>
+                            <input type="tel" id="mobile" name="mobile" placeholder="05xxxxxxxx">
+                            <span class="error-message">رقم الجوال مطلوب</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality">الجنسية</label>
+                            <select id="nationality" name="nationality">
+                                <option value="">اختر الجنسية</option>
+                                <option value="سعودي">سعودي</option>
+                                <option value="أخرى">أخرى</option>
+                            </select>
+                            <span class="error-message">يرجى اختيار الجنسية</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="national_id_iqama">رقم الهوية / الإقامة</label>
+                            <input type="text" id="national_id_iqama" name="national_id_iqama" placeholder="أدخل الرقم">
+                            <span class="error-message" id="id_error">رقم الهوية/الإقامة مطلوب</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- القسم الثاني: البيانات الوظيفية -->
+                <section class="form-section">
+                    <h2 class="section-title"><span>💼</span> البيانات الوظيفية</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="department">القسم</label>
+                            <select id="department" name="department">
+                                <option value="">اختر القسم</option>
+                                <option value="الموارد البشرية">الموارد البشرية</option>
+                                <option value="المالية">المالية</option>
+                                <option value="تقنية المعلومات">تقنية المعلومات</option>
+                                <option value="المبيعات">المبيعات</option>
+                                <option value="العمليات">العمليات</option>
+                            </select>
+                            <span class="error-message">يرجى اختيار القسم</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="basic_salary">الراتب الأساسي</label>
+                            <input type="number" id="basic_salary" name="basic_salary" placeholder="مثال: 5000">
+                            <span class="error-message">الراتب يجب أن يكون أكبر من صفر</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="hiring_date">تاريخ التعيين</label>
+                            <input type="date" id="hiring_date" name="hiring_date">
+                            <span class="error-message">تاريخ التعيين مطلوب</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- القسم الثالث: البيانات القانونية -->
+                <section class="form-section">
+                    <h2 class="section-title"><span>📜</span> البيانات القانونية</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="iqama_expiry_date">تاريخ انتهاء الهوية / الإقامة</label>
+                            <input type="date" id="iqama_expiry_date" name="iqama_expiry_date">
+                            <span class="error-message">تاريخ الانتهاء يجب أن يكون في المستقبل</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="btn-container">
+                    <button type="button" class="btn-secondary" id="reset-btn">إعادة تعيين</button>
+                    <button type="submit" class="btn-primary" id="submit-btn">حفظ الموظف</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- لوحة التحكم (Dashboard) -->
-    <div id="dashboard-screen" class="container fade-in hidden">
-        <div class="dashboard-header">
-            <h1 class="welcome-msg">أهلاً، <span id="employee-name">موظف</span> 👋</h1>
-            <p class="subtitle">لوحة التحكم اليومية</p>
-        </div>
-
-        <div class="status-card">
-            <p class="status-label">حالة اليوم</p>
-            <p id="attendance-status" class="status-time">لم يتم تسجيل الحضور بعد</p>
-        </div>
-
-        <div class="attendance-actions">
-            <button id="btn-checkin" class="btn btn-checkin">تسجيل حضور</button>
-            <button id="btn-checkout" class="btn btn-checkout" disabled>تسجيل انصراف</button>
-        </div>
-
-        <div style="margin-top: 2rem; text-align: center;">
-            <a href="#" id="logout-link" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none;">تسجيل الخروج</a>
-        </div>
-    </div>
-
-    <!-- استدعاء مكتبة Supabase -->
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>    
-    <!-- ملف الجافاسكريبت بتاعنا -->
     <script src="app.js"></script>
 </body>
 </html>

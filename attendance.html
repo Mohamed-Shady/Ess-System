@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الحضور والانصراف | نظام ERP</title>
+    <link rel="stylesheet" href="attendance_style.css">
+</head>
+<body>
+    <div id="status-notification" class="status-msg"></div>
+
+    <div class="container">
+        <header>
+            <h2 id="company_name_display">لوحة الموظف</h2>
+            <p>نظام تسجيل الوقت الذكي</p>
+        </header>
+
+        <!-- كارت الساعة الحية -->
+        <div class="clock-card">
+            <span id="current-time">00:00:00</span>
+            <span id="current-date">يتم التحميل...</span>
+        </div>
+
+        <!-- كارت الأزرار -->
+        <div class="action-card">
+            <button id="btn-check-in" class="btn btn-check-in">تسجيل حضور</button>
+            <button id="btn-check-out" class="btn btn-check-out">تسجيل انصراف</button>
+            <div id="completion-msg">✅ تم اكتمال الدوام اليوم، شكراً لك</div>
+        </div>
+
+        <!-- سجل الحضور الأخير -->
+        <div class="history-card">
+            <h3>سجل آخر 5 أيام</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>التاريخ</th>
+                        <th>حضور</th>
+                        <th>انصراف</th>
+                    </tr>
+                </thead>
+                <tbody id="history-body">
+                    <tr>
+                        <td colspan="3" style="text-align: center; color: #999;">جاري تحميل السجل...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="attendance.js"></script>
+</body>
+</html>

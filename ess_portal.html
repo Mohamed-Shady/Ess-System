@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة الخدمة الذاتية | نظام ERP</title>
+    <link rel="stylesheet" href="ess_portal_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="company_name_display">بوابة الخدمة الذاتية للموظفين</h1>
+            <p>تقديم الطلبات وإدارة الموافقات</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchView('employee')">تقديم طلب</button>
+            <button class="tab-btn" onclick="switchView('manager')">إدارة الطلبات (مدير)</button>
+        </div>
+
+        <div id="status-container" class="status-msg"></div>
+
+        <!-- واجهة الموظف: تقديم الطلب -->
+        <div id="employee-view" class="view-section">
+            <div class="portal-card">
+                <h2 style="margin-bottom: 20px;">طلب جديد</h2>
+                <form id="request-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="request_type">نوع الطلب</label>
+                            <select id="request_type" required>
+                                <option value="">اختر النوع...</option>
+                                <option value="leave">إجازة</option>
+                                <option value="loan">سلفة</option>
+                                <option value="permission">استئذان</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="start_date">من تاريخ</label>
+                            <input type="date" id="start_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="end_date">إلى تاريخ</label>
+                            <input type="date" id="end_date" required>
+                        </div>
+                    </div>
+
+                    <div id="loan-field" class="form-group loan-amount-field">
+                        <label for="amount">مبلغ السلفة (ريال)</label>
+                        <input type="number" id="amount" placeholder="0.00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">السبب / ملاحظات</label>
+                        <textarea id="reason" rows="3" required placeholder="اشرح سبب الطلب بوضوح..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">إرسال الطلب</button>
+                </form>
+            </div>
+
+            <div class="portal-card">
+                <h2 style="margin-bottom: 20px;">سجل طلباتي السابقة</h2>
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>التاريخ</th>
+                                <th>النوع</th>
+                                <th>السبب</th>
+                                <th>الحالة</th>
+                            </tr>
+                        </thead>
+                        <tbody id="my-requests-body">
+                            <tr><td colspan="4" style="text-align:center; padding: 20px;">جاري تحميل طلباتك...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- واجهة المدير: إدارة الطلبات -->
+        <div id="manager-view" class="view-section" style="display: none;">
+            <div class="portal-card">
+                <h2 style="margin-bottom: 20px;">الطلبات المعلقة</h2>
+                <div style="overflow-x: auto;">
+                    <table id="manager-table">
+                        <thead>
+                            <tr>
+                                <th>الموظف</th>
+                                <th>النوع</th>
+                                <th>التاريخ</th>
+                                <th>التفاصيل</th>
+                                <th>الإجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="manager-requests-body">
+                            <tr><td colspan="5" style="text-align:center; padding: 20px;">لا توجد طلبات معلقة حالياً.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ess_portal.js"></script>
+</body>
+</html>

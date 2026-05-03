@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة مسيرات الرواتب | نظام ERP</title>
+    <link rel="stylesheet" href="payroll_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title-area">
+                <h1 id="company_name_display">لوحة تحكم الرواتب</h1>
+                <p style="color: #666;">إدارة وتوليد مسيرات الرواتب الشهرية</p>
+            </div>
+        </header>
+
+        <div id="status-container" class="status-msg"></div>
+
+        <div class="control-panel">
+            <div class="input-group">
+                <label for="payroll-month">اختر الشهر والتحليل</label>
+                <input type="month" id="payroll-month">
+            </div>
+            <button id="btn-generate-payroll" class="btn btn-generate">توليد مسير الرواتب</button>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>اسم الموظف</th>
+                            <th>الراتب الأساسي</th>
+                            <th>الخصومات</th>
+                            <th>المكافآت</th>
+                            <th>الصافي</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="payroll-table-body">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: #999; padding: 40px;">يرجى اختيار شهر لعرض البيانات</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="payroll.js"></script>
+</body>
+</html>

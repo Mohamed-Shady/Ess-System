@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الطلبات | نظام ERP</title>
+    <link rel="stylesheet" href="requests_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="company_name_display">لوحة إدارة الطلبات</h1>
+            <p>مراجعة طلبات الإجازات والسلف للموظفين</p>
+        </header>
+
+        <div id="status-container" class="status-msg"></div>
+
+        <div class="portal-card">
+            <h2>الطلبات المعلقة</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الموظف</th>
+                            <th>النوع</th>
+                            <th>التاريخ</th>
+                            <th>التفاصيل</th>
+                            <th>الإجراء</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-requests-body">
+                        <tr><td colspan="5" style="text-align:center; padding: 20px;">جاري تحميل الطلبات المعلقة...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin_requests.js"></script>
+</body>
+</html>

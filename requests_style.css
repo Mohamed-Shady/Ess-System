@@ -1,0 +1,118 @@
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    direction: rtl;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 { color: var(--primary-color); }
+
+.portal-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.form-group { margin-bottom: 15px; }
+label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+.loan-amount-field { display: none; }
+
+.btn-submit {
+    background: var(--accent-color);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th { background: #f8f9fa; padding: 12px; text-align: right; border-bottom: 2px solid #eee; }
+td { padding: 12px; border-bottom: 1px solid #eee; }
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-pending { background: #fef9e7; color: #f39c12; }
+.status-approved { background: #e8f8f5; color: #27ae60; }
+.status-rejected { background: #fdeaea; color: #e74c3c; }
+
+.manager-actions { display: flex; gap: 10px; }
+.action-btn {
+    padding: 6px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-approve { background: var(--success-color); color: white; }
+.btn-reject { background: var(--danger-color); color: white; }
+
+.rejection-area {
+    margin-top: 10px;
+    display: none;
+}
+
+.status-msg {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+.status-msg.success { background: #d4edda; color: #155724; display: block; }
+.status-msg.error { background: #f8d7da; color: #721c24; display: block; }
